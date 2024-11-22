@@ -1,25 +1,30 @@
-
 n = int(input("Введите размерность квадратной матрицы: "))
 
-a = [[0] * n for i in range(n)]
+m = [[0] * n for i in range(n)]
 
 for i in range(n):
     s = input(f"Введите элементы {i + 1} строки матрицы, разделяя значения элементов пробелом: ")
     c = list(map(int, s.split()))
     for j in range(n):
-        a[i][j] = c[j]
+        m[i][j] = c[j]
 
 print("Исходная матрица:")
-for row in a:
+for row in m:
     print(row)
 
 
-for j in range(n - 1):
-    for k in range(j + 1, n):
-        for m in range(j, n):
-            a[k][m] = a[k][m] - a[j][m] * a[k][j] // a[j][j]
+ 
+for i in range(n):
+    for j in range(i + 1, n):
+        if m[j][i] != 0:  
+            f = m[j][i] / m[i][i]
+            for k in range(i, n):
+                m[j][k] -= f * m[i][k]
 
 
-print("Результирующая матрица:")
-for row in a:
+ 
+
+
+print("Матрица в верхнеугольном виде:")
+for row in m:
     print(row)

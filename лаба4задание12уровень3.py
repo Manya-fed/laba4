@@ -14,10 +14,11 @@ for row in a:
     print(row)
 
 
-for j in range(min(n - 1, 4)):
-    for k in range(j + 1, min(n, 5)):
-        for m in range(j, min(n, 5)):
+for j in range(n - 1):
+    for k in range(j + 1, n):
+        for m in range(j, n):
             a[k][m] = a[k][m] - a[j][m] * a[k][j] // a[j][j]
+
 
 print("Результирующая матрица:")
 for row in a:
